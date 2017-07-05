@@ -1,4 +1,4 @@
-# vue-cli-max
+# vue-cli
 
 > A Vue.js project
 
