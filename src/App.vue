@@ -2,47 +2,25 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <server-status-header></server-status-header>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <ul class="list-group">
-                    <li class="list-group-item" v-for="index in 5">
-                        <app-server-status></app-server-status>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <server-status-details></server-status-details>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-xs-12">
-                <server-status-footer></server-status-footer>
+                <app-user></app-user>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import ServerStatusHeader from './components/shared/ServerStatusHeader.vue';
-    import AppServerStatus from './components/server/AppServerStatus.vue';
-    import ServerStatusDetails from './components/server/ServerStatusDetails.vue';
-    import ServerStatusFooter from './components/shared/ServerStatusFooter.vue';
+    import User from './components/User.vue';
 
     export default {
         components: {
-            'server-status-header': ServerStatusHeader,
-            AppServerStatus,
-            'server-status-details': ServerStatusDetails,
-            'server-status-footer': ServerStatusFooter
+            appUser: User
         }
     }
 </script>
 
 <style>
-
+    div.component {
+        border: 1px solid black;
+        padding: 30px;
+    }
 </style>
