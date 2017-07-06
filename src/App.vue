@@ -28,10 +28,10 @@
 </template>
 
 <script>
-    import ServerStatusHeader from './ServerStatusHeader.vue';
-    import ServerStatus from './ServerStatus.vue';
-    import ServerStatusDetails from './ServerStatusDetails.vue';
-    import ServerStatusFooter from './ServerStatusFooter.vue';
+    import ServerStatusHeader from './components/shared/ServerStatusHeader.vue';
+    import ServerStatus from './components/server/ServerStatus.vue';
+    import ServerStatusDetails from './components/server/ServerStatusDetails.vue';
+    import ServerStatusFooter from './components/shared/ServerStatusFooter.vue';
 
     export default {
         components: {
