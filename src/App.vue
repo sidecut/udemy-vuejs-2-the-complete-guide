@@ -10,7 +10,7 @@
             <div class="col-xs-12 col-sm-6">
                 <ul class="list-group">
                     <li class="list-group-item" v-for="index in 5">
-                        <server-status></server-status>
+                        <app-server-status></app-server-status>
                     </li>
                 </ul>
             </div>
@@ -29,14 +29,14 @@
 
 <script>
     import ServerStatusHeader from './components/shared/ServerStatusHeader.vue';
-    import ServerStatus from './components/server/ServerStatus.vue';
+    import AppServerStatus from './components/server/AppServerStatus.vue';
     import ServerStatusDetails from './components/server/ServerStatusDetails.vue';
     import ServerStatusFooter from './components/shared/ServerStatusFooter.vue';
 
     export default {
         components: {
             'server-status-header': ServerStatusHeader,
-            'server-status': ServerStatus,
+            AppServerStatus,
             'server-status-details': ServerStatusDetails,
             'server-status-footer': ServerStatusFooter
         }
