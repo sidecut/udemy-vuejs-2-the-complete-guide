@@ -3,8 +3,8 @@
         <app-header></app-header>
         <hr>
         <div class="row">
-            <servers :currentServer="currentServer"></servers>
-            <app-server-details :server="currentServer"></app-server-details>
+            <servers :currentServerId="currentServerId"></servers>
+            <app-server-details :id="currentServerId" :status="currentServerStatus"></app-server-details>
         </div>
         <hr>
         <app-footer></app-footer>
@@ -27,23 +27,26 @@
         },
         created() {
             var self = this;
-            eventBus.$on("selectServer", (server, evt) => {
-                if (self.currentServer == server && evt.ctrlKey) {
+            eventBus.$on("selectServer", (id, status, evt) => {
+                if (self.currentServerId == id && evt.ctrlKey) {
                     // If we're already selected and they hit the control key, clear the selection
-                    self.currentServer = void 0;
+                    self.currentServerId = void 0;
+                    selt.currentServerStatus = void 0;
                 } else {
-                    self.currentServer = server;
+                    self.currentServerId = id;
+                    self.currentServerStatus = status;
                 }
-                console.log("Selected new server", server);
+                console.log("Selected new server", id);
             });
             eventBus.$on("deselectServer", () => {
                 console.log("Deselect");
-                self.currentServer = void 0;
+                self.currentServerId = void 0;
             });
         },
         data() {
             return {
-                currentServer: void 0 //{id: 10}
+                currentServerId: void 0, //{id: 10},
+                currentServerStatus: void 0 //{id: 10},
             }
         }
     }

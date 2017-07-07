@@ -4,7 +4,7 @@
             <li
                     class="list-group-item"
                     v-for="server in servers">
-                <app-server :server="server" :is-current="isSelected(server)"></app-server>
+                <app-server :id="server.id" :status="server.status" :is-current="isSelected(server)"></app-server>
             </li>
         </ul>
     </div>
@@ -18,7 +18,7 @@
         components: {
             AppServer
         },
-        props: ["currentServer"],
+        props: ["currentServerId"],
         data() {
             return {
                 servers: [
@@ -31,7 +31,7 @@
         },
         methods: {
             isSelected(server) {
-                return this.currentServer && server.id == this.currentServer.id;
+                return server.id == this.currentServerId;
             }
         }
     }

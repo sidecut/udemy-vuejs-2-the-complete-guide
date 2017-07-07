@@ -13,24 +13,18 @@
 
 <script>
     export default {
-        props: ["server"],
+        props: ["id", "status"],
         computed: {
             visible() {
                 // console.log("visible of server:", this.server);
-                let isVisible = !!this.server && this.server.id;
+                let isVisible = !!this.id;
                 // console.log("Computing visible of ServerDetails", isVisible);
                 return isVisible;
-            },
-            id() {
-                return !!this.server ? this.server.id : void 0;
-            },
-            status() {
-                return !!this.server ? this.server.status : void 0;
             },
         },
         methods: {
             resetServer() {
-                this.server.status = "Normal";
+                this.status = "Normal";
             }
         }
     }

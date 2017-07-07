@@ -3,8 +3,8 @@ import App from './App.vue'
 
 export const eventBus = new Vue({
     methods: {
-        selectServer(server, evt) {
-            this.$emit("selectServer", server, evt);
+        selectServer(id, status, evt) {
+            this.$emit("selectServer", id, status, evt);
             // console.log("selectServer", server);
         },
         deselectServer() {

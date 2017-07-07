@@ -1,13 +1,13 @@
 <template>
     <div @click="selectServer" class="parent" :class="{'is-current': isCurrent,
-            'status-good': server.status == 'Normal',
-            'status-unknown': server.status == 'Unknown',
-            'status-critical': server.status == 'Critical'}">
+            'status-good': status == 'Normal',
+            'status-unknown': status == 'Unknown',
+            'status-critical': status == 'Critical'}">
         <div class="child" style="width: 24px">
             <div v-show="isCurrent" class="glyphicon glyphicon-play" style="font-size: 23px"
                 @click.stop="deselectServer"></div>
         </div>
-        <div class="child server-name-and-status">Server #{{ server.id }} - {{ server.status }}</div>
+        <div class="child server-name-and-status">Server #{{ id }} - {{ status }}</div>
     </div>
 </template>
 
@@ -15,12 +15,12 @@
     import { eventBus } from "../../main";
 
     export default {
-        props: [ "server", "isCurrent" ],
+        props: [ "id", "status", "isCurrent" ],
         methods: {
             selectServer(evt) {
-                console.log("clicked server", this.server, evt);
+                console.log("clicked server", this.id, this.status, evt);
 
-                eventBus.selectServer(this.server, evt);
+                eventBus.selectServer(this.id, this.status, evt);
             },
             deselectServer() {
                 console.log("Deselect");
