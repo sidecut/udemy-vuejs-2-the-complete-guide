@@ -1,9 +1,13 @@
 <template>
-    <div @click="selectServer"
-        :class="{'is-current': isCurrent,
-        'status-good': server.status == 'Normal',
-        'status-unknown': server.status == 'Unknown',
-        'status-critical': server.status == 'Critical'}">Server #{{ server.id }} - {{ server.status }}</div>
+    <div @click="selectServer" class="parent" :class="{'is-current': isCurrent,
+            'status-good': server.status == 'Normal',
+            'status-unknown': server.status == 'Unknown',
+            'status-critical': server.status == 'Critical'}">
+        <div>
+            <div v-show="isCurrent" class="glyphicon glyphicon-play" style="font-size: 24px"></div>
+        </div>
+        <div class="child server-name-and-status">Server #{{ server.id }} - {{ server.status }}</div>
+    </div>
 </template>
 
 <script>
@@ -22,14 +26,25 @@
 </script>
 
 <style scoped>
-    div {
-        cursor: pointer;
+    .parent {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        grid-gap: 0.5em;
         padding: 1em;
     }
-    div:hover {
-        background-color: #eee;
+    div {
+        cursor: pointer;
+        /*padding: 1em;*/
     }
-    /*.is-current {
+    div:hover {
         background-color: lightgoldenrodyellow;
-    }*/
+    }
+    div.parent:hover .glyphicon {
+        color: gray;
+    }
+    .server-name-and-status {
+        position: relative;
+        top: .35em;
+        height: 29px;
+    }
 </style>
