@@ -26,8 +26,9 @@
             'app-footer': Footer
         },
         created() {
-            eventBus.$on("selectServer", server => {
-                if (this.currentServer == server) {
+            eventBus.$on("selectServer", (server, evt) => {
+                if (this.currentServer == server && evt.ctrlKey) {
+                    // If we're already selected and they hit the control key, clear the selection
                     this.currentServer = void 0;
                 } else {
                     this.currentServer = server;

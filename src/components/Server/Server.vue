@@ -8,10 +8,10 @@
     export default {
         props: [ "server", "isCurrent" ],
         methods: {
-            selectServer() {
-                console.log("clicked server", this.server);
+            selectServer(evt) {
+                console.log("clicked server", this.server, evt);
 
-                eventBus.selectServer(this.server);
+                eventBus.selectServer(this.server, evt);
             }
         }
     }
