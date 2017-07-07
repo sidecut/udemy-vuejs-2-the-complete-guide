@@ -3,7 +3,7 @@
             'status-good': server.status == 'Normal',
             'status-unknown': server.status == 'Unknown',
             'status-critical': server.status == 'Critical'}">
-        <div>
+        <div class="child" style="width: 24px">
             <div v-show="isCurrent" class="glyphicon glyphicon-play" style="font-size: 24px"
                 @click.stop="deselectServer"></div>
         </div>
@@ -31,11 +31,17 @@
 </script>
 
 <style scoped>
-    .parent {
+    div.parent {
         display: grid;
         grid-template-columns: 24px 1fr;
+        -ms-grid-columns: 24px 20em;
+        -ms-grid-rows: 1fr;
         grid-gap: 0.5em;
+        /*-ms-grid-gap: 0.5em;*/
         padding: 1em;
+    }
+    div.child {
+        display: inline-block;
     }
     div {
         cursor: pointer;
