@@ -20,11 +20,12 @@
 <style scoped>
     div {
         cursor: pointer;
+        padding: 1em;
     }
     div:hover {
         background-color: #eee;
     }
     .is-current {
-        background-color: rgba(43,192,255,0.11);
+        background-color: lightgoldenrodyellow;
     }
 </style>
