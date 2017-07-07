@@ -1,7 +1,12 @@
 <template>
-    <div class="col-xs-12 col-sm-6" :class="{hidden: !visible}">
-        <p>Server #: {{ id }}</p>
-        <p>Status: {{ status }}</p>
+    <div>
+        <div v-if="visible" class="col-xs-12 col-sm-6" :class="{hidden: !visible,
+            'status-good': status == 'Normal',
+            'status-unknown': status == 'Unknown',
+            'status-critical': status == 'Critical'}">
+            <p>Server #: {{ id }}</p>
+            <p>Status: {{ status }}</p>
+        </div>
     </div>
 </template>
 
@@ -28,5 +33,8 @@
 <style scoped>
     .hidden {
         visibility: hidden;
+    }
+    div {
+        padding: 1em 1em 0.5em 1em;
     }
 </style>

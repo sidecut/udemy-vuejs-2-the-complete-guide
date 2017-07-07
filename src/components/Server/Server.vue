@@ -1,5 +1,9 @@
 <template>
-    <div @click="selectServer" :class="{'is-current': isCurrent}">Server #{{ server.id }} - {{ server.status }}</div>
+    <div @click="selectServer"
+        :class="{'is-current': isCurrent,
+        'status-good': server.status == 'Normal',
+        'status-unknown': server.status == 'Unknown',
+        'status-critical': server.status == 'Critical'}">Server #{{ server.id }} - {{ server.status }}</div>
 </template>
 
 <script>
@@ -25,7 +29,7 @@
     div:hover {
         background-color: #eee;
     }
-    .is-current {
+    /*.is-current {
         background-color: lightgoldenrodyellow;
-    }
+    }*/
 </style>

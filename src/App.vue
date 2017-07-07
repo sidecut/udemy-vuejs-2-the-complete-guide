@@ -47,6 +47,16 @@
     }
 </script>
 
-<style>
+<style lang="less">
+    .status-good {
+        background-color: lighten(desaturate(lightgreen, 25%), 20%);
+    }
 
+    .status-unknown {
+        background-color: lighten(lightgray, 10%);
+    }
+
+    .status-critical {
+        background-color: lighten(desaturate(pink, 25%), 7.5%);
+    }
 </style>
