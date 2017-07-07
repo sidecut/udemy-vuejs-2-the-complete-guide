@@ -12,6 +12,8 @@
 </template>
 
 <script>
+    import { eventBus } from "../../main";
+
     export default {
         props: ["id", "status"],
         computed: {
@@ -24,7 +26,7 @@
         },
         methods: {
             resetServer() {
-                this.status = "Normal";
+                eventBus.setStatus(this.id, "Normal");
             }
         }
     }

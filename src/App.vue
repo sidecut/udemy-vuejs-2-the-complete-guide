@@ -42,6 +42,11 @@
                 console.log("Deselect");
                 self.currentServerId = void 0;
             });
+            eventBus.$on("setStatus", (id, status) => {
+                if (self.currentServerId === id) {
+                    self.currentServerStatus = status;
+                }
+            });
         },
         data() {
             return {

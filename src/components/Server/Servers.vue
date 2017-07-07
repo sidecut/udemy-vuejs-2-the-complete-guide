@@ -29,6 +29,15 @@
                 ],
             };
         },
+        created () {
+            var self = this;
+            eventBus.$on("setStatus", (id, status) => {
+                var server = self.servers.find(s => s.id === id);
+                if (!!server) {
+                    server.status = status;
+                }
+            });
+        },
         methods: {
             isSelected(server) {
                 return server.id == this.currentServerId;

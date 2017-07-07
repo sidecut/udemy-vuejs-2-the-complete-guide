@@ -9,6 +9,9 @@ export const eventBus = new Vue({
         },
         deselectServer() {
             this.$emit("deselectServer");
+        },
+        setStatus(id, status) {
+            this.$emit("setStatus", id, status);
         }
     }
 });
