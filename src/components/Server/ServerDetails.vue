@@ -6,6 +6,7 @@
             'status-critical': status == 'Critical'}">
             <p>Server # {{ id }}</p>
             <p>Status: {{ status }}</p>
+            <p><button class="btn btn-default" :disabled="status == 'Normal'" @click="resetServer">Reset server status</button></p>
         </div>
     </div>
 </template>
@@ -27,6 +28,11 @@
                 return !!this.server ? this.server.status : void 0;
             },
         },
+        methods: {
+            resetServer() {
+                this.server.status = "Normal";
+            }
+        }
     }
 </script>
 
