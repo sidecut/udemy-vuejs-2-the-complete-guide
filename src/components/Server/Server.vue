@@ -4,7 +4,8 @@
             'status-unknown': server.status == 'Unknown',
             'status-critical': server.status == 'Critical'}">
         <div>
-            <div v-show="isCurrent" class="glyphicon glyphicon-play" style="font-size: 24px"></div>
+            <div v-show="isCurrent" class="glyphicon glyphicon-play" style="font-size: 24px"
+                @click.stop="deselectServer"></div>
         </div>
         <div class="child server-name-and-status">Server #{{ server.id }} - {{ server.status }}</div>
     </div>
@@ -20,6 +21,10 @@
                 console.log("clicked server", this.server, evt);
 
                 eventBus.selectServer(this.server, evt);
+            },
+            deselectServer() {
+                console.log("Deselect");
+                eventBus.deselectServer();
             }
         }
     }
@@ -39,7 +44,7 @@
     div:hover {
         background-color: lightgoldenrodyellow;
     }
-    div.parent:hover .glyphicon {
+    .glyphicon:hover {
         color: gray;
     }
     .server-name-and-status {

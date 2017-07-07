@@ -6,6 +6,9 @@ export const eventBus = new Vue({
         selectServer(server, evt) {
             this.$emit("selectServer", server, evt);
             // console.log("selectServer", server);
+        },
+        deselectServer() {
+            this.$emit("deselectServer");
         }
     }
 });

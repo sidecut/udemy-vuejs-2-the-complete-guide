@@ -4,7 +4,7 @@
             'status-good': status == 'Normal',
             'status-unknown': status == 'Unknown',
             'status-critical': status == 'Critical'}">
-            <p>Server #: {{ id }}</p>
+            <p>Server # {{ id }}</p>
             <p>Status: {{ status }}</p>
         </div>
     </div>

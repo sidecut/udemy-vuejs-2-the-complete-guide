@@ -26,18 +26,20 @@
             'app-footer': Footer
         },
         created() {
+            var self = this;
             eventBus.$on("selectServer", (server, evt) => {
-                if (this.currentServer == server && evt.ctrlKey) {
+                if (self.currentServer == server && evt.ctrlKey) {
                     // If we're already selected and they hit the control key, clear the selection
-                    this.currentServer = void 0;
+                    self.currentServer = void 0;
                 } else {
-                    this.currentServer = server;
+                    self.currentServer = server;
                 }
                 console.log("Selected new server", server);
             });
-        },
-        mounted() {
-            console.log("mounted.  currentServer:", this.currentServer);
+            eventBus.$on("deselectServer", () => {
+                console.log("Deselect");
+                self.currentServer = void 0;
+            });
         },
         data() {
             return {
