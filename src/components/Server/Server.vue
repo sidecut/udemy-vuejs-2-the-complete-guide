@@ -4,7 +4,7 @@
             'status-unknown': server.status == 'Unknown',
             'status-critical': server.status == 'Critical'}">
         <div class="child" style="width: 24px">
-            <div v-show="isCurrent" class="glyphicon glyphicon-play" style="font-size: 24px"
+            <div v-show="isCurrent" class="glyphicon glyphicon-play" style="font-size: 23px"
                 @click.stop="deselectServer"></div>
         </div>
         <div class="child server-name-and-status">Server #{{ server.id }} - {{ server.status }}</div>
@@ -47,7 +47,7 @@
         cursor: pointer;
         /*padding: 1em;*/
     }
-    div:hover {
+    div.parent:hover {
         background-color: lightgoldenrodyellow;
     }
     .glyphicon:hover {
