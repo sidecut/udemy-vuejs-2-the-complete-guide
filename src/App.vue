@@ -10,7 +10,7 @@
                 <component :is="chosenComponent">
                     <div slot="title">Here's a cool photo</div>
                     <img slot="photo" src="http://chromecastbg.alexmeub.com/images/1080_AF1QipNSGlIyQnKXjJjAjELwUb60Ji58mfCGUo0nwxPR.jpg">
-                    <p>This is an amazing vista in New Zealand.  Visit New Zealand today!</p>
+                    <p>This is an amazing vista in New Zealand.<br>Visit New Zealand today!</p>
                     <div slot="photo-info">
                         <p>Pekapeka Swamp, Hawke's Bay, New Zealand</p>
                         <p>By Andrew Caldwell</p></div>

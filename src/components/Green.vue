@@ -24,6 +24,7 @@
         padding: 30px;
         margin: 20px auto;
         text-align: center;
+        font-family: "Franklin Gothic Book";
     }
     h1 {
         /*margin-bottom: 1em;*/
