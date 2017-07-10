@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
-</head>
-<body>
-  <div id="app">
-    <v-app>
-      <main>
-        <v-container>Hello world</v-container>
-      </main>
-    </v-app>
-  </div>
 
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
-  <script>
-    new Vue({ el: '#app' })
-  </script>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <main>
+                <v-container>
+                    <form @submit.prevent="onSubmit" @keyup.esc="cancel">
+                        <v-text-field v-model="firstName" autofocus label="First name"></v-text-field>
+                        <v-btn @click.native="onSubmit" :loading="loading">OK</v-btn>
+                        <v-btn @click.native="cancel" :disabled="loading">Cancel</v-btn>
+                        </v-form>
+                </v-container>
+            </main>
+        </v-app>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                firstName: null,
+                loading: false
+            },
+            methods: {
+                onSubmit() {
+                    //alert('Whatevs');
+                    this.loading = true;
+                    //window.setTimeout(() => {
+                        axios.get('//www.gotomygrants.com')
+                            .then(() => {
+                                this.loading = false;
+                            })
+                            .catch(() => {
+                                this.loading = false;
+                            });
+                    //}, 2000);
+                },
+                cancel() {
+                    this.firstName = "";
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
