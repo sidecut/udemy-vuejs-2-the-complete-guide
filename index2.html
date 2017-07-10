@@ -4,6 +4,11 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <style>
+        .monospace {
+            font-family: Courier New, Courier, monospace
+        }
+    </style>
 </head>
 
 <body>
@@ -12,12 +17,16 @@
             <main>
                 <v-container>
                     <form @submit.prevent="onSubmit" @keyup.esc="cancel">
-                        <v-text-field v-model="firstName" autofocus label="First name"></v-text-field>
+                        <v-text-field v-model="url" autofocus label="URL"></v-text-field>
                         <v-btn @click.native="onSubmit" :loading="loading">OK</v-btn>
                         <v-btn @click.native="cancel" :disabled="loading">Cancel</v-btn>
                         </v-form>
                 </v-container>
             </main>
+            <v-container>
+                <div v-html="htmlData" style="overflow: hidden" v-show="htmlData"></div>
+                <div style="overflow: hidden" v-show="responseData" class="monospace">{{ responseData }}</div>
+            </v-container>
         </v-app>
     </div>
 
@@ -28,25 +37,35 @@
         new Vue({
             el: '#app',
             data: {
-                firstName: null,
-                loading: false
+                url: 'https://jsonplaceholder.typicode.com/posts',
+                loading: false,
+                htmlData: null,
+                responseData: null,
             },
             methods: {
                 onSubmit() {
                     //alert('Whatevs');
+                    this.responseData = this.htmlData = null;
                     this.loading = true;
                     //window.setTimeout(() => {
-                        axios.get('//www.gotomygrants.com')
-                            .then(() => {
-                                this.loading = false;
-                            })
-                            .catch(() => {
-                                this.loading = false;
-                            });
+                    axios.get(this.url)
+                        .then((response) => {
+                            if (false && response.headers["content-type"].startsWith("text/html;")) {
+                                this.htmlData = response.data;
+                            } else {
+                                this.responseData = response.data;
+                            }
+                            this.loading = false;
+                        })
+                        .catch((e, a, b, c) => {
+                            alert(`${e}\n\nPlease try again.`);
+                            this.loading = false;
+                        });
                     //}, 2000);
                 },
                 cancel() {
                     this.firstName = "";
+                    this.htmlData = "";
                 }
             }
         });
