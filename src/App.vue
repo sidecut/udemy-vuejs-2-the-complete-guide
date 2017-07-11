@@ -29,7 +29,11 @@ export default {
     },
     methods: {
         onQuoteAdded(quote) {
-            this.quotes.push(quote);
+            if (this.quotes.length < this.maxQuotes) {
+                this.quotes.push(quote);
+            } else {
+                alert("You have already reached the maximum number of quotes.  Please delete one before adding another.");
+            }
         },
         deleteQuote(index) {
             // console.log("Deleting", index);
