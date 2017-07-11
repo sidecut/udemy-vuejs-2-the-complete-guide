@@ -1,14 +1,32 @@
 <template>
     <div class="container">
-    
+        <app-new-quote @quoteAdded="onQuoteAdded"></app-new-quote>
+        <app-quote-grid :quotes="quotes"></app-quote-grid>
     </div>
 </template>
 
 <script>
-    export default {
-        
+import QuoteGrid from './components/QuoteGrid.vue';
+import NewQuote from './components/NewQuote.vue';
+
+export default {
+    data: () => ({
+        quotes: ["A stitch in time saves nine."],
+        maxQuotes: 10,
+    }),
+    components:
+    {
+        appQuoteGrid: QuoteGrid,
+        appNewQuote: NewQuote
+    },
+    methods: {
+        onQuoteAdded(quote) {
+            this.quotes.push(quote);
+        }
     }
+}
 </script>
 
 <style>
+
 </style>
