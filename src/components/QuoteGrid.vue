@@ -16,8 +16,9 @@ export default {
     },
     methods: {
         deleteQuote(idx) {
-            console.log("Deleting", idx);
-            this.quotes.splice(idx, 1);
+            // console.log("Deleting", idx);
+            // this.quotes.splice(idx, 1);
+            this.$emit("deleteQuote", idx);
         }
     }
 }
