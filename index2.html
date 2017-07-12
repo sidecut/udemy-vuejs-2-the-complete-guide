@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <title>Test</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        .content {
+            margin-top: 1em;
+        }
+        .loading {
+            font-style: italic;
+            color: rgb(218, 159, 124);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-show="false" class="loading">Loading...</div>
+        <div v-cloak class="content">
+            <p>Loaded: {{ loaded }}</p>
+            <form>
+                <!--<label><input type="checkbox" value="Red" name="colors">Red</label><br>-->
+                <!--<label><input type="checkbox" value="Blue" name="colors">Blue</label><br>-->
+                <label><input type="checkbox" value="Red" v-model="colors">Red</label><br>
+                <label><input type="checkbox" value="Blue" v-model="colors">Blue</label><br>
+                <p>
+                    <label><input type="radio" v-model="gender" value="Male">Male</label>
+                    <label><input type="radio" v-model="gender" value="Female">Female</label>
+                    <!-- This is for the form submit -->
+                    <input type="hidden" v-model="gender" name="gender">
+                </p>
+                <!--<p>-->
+                    <!--&lt;!&ndash;<input type="hidden" name="animal" value="Elephant">&ndash;&gt;-->
+                    <!--<label><input type="radio" v-model="gender" name="animal" value="Cat">Cat</label>-->
+                    <!--<label><input type="radio" v-model="gender" name="animal" value="Dog">Dog</label>-->
+                <!--</p>-->
+                <p>
+                    <label>Priority:
+                        <select v-model="priority" autofocus>
+                            <option value="">-- Select one --</option>
+                            <option v-for="priority in priorities" :value="priority">{{ priority.desc }}</option>
+                        </select>
+                    </label>
+                </p>
+                <p>
+                    <button>Submit</button>
+                    <button @click.prevent="reset">Reset</button>
+                </p>
+            </form>
+            <hr>
+            <div>
+                <ul>
+                    <li v-for="color in colors">{{ color }}</li>
+                </ul>
+            </div>
+            <div>Gender: {{ gender }}</div>
+            <p>Priority:{{ priority }}</p>
+        </div>
+    </div>
+    <!--<script src="//unpkg.com/vue@2.3.4/dist/vue.min.js"></script>-->
+    <script src="//unpkg.com/vue@2.3.4"></script>
+    <script>
+        (() => {
+            var priorities = [
+                {value: 2, desc: "High"},
+                {value: 1, desc: "Medium"},
+                {value: 0, desc: "Low"}];
+
+            new Vue({
+                el: '#app',
+                data: {
+                    colors: [],
+                    loaded: new Date(),
+                    gender: "",
+                    priorities: priorities,
+                    priority: priorities[1]
+                },
+                methods: {
+                    reset() {
+                        this.colors = [];
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
