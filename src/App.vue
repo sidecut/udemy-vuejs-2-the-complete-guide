@@ -1,6 +1,10 @@
 <template>
     <div class="container">
         <app-header :maxQuotes="maxQuotes" :quoteCount="quotes.length"></app-header>
+        <app-switch v-for="(toggle, i) in switches" v-model="switches[i]"></app-switch>
+        <ul>
+            <li v-for="(toggle, i) in switches" :key="i">{{ toggle }}</li>
+        </ul>
         <app-new-quote @quoteAdded="onQuoteAdded"></app-new-quote>
         <app-quote-grid :quotes="quotes" @deleteQuote="deleteQuote"></app-quote-grid>
         <div class="row">
@@ -15,17 +19,20 @@
 import Header from './components/Header.vue';
 import QuoteGrid from './components/QuoteGrid.vue';
 import NewQuote from './components/NewQuote.vue';
+import Switch from "./Switch.vue";
 
 export default {
     data: () => ({
         quotes: ["A stitch in time saves nine."],
         maxQuotes: 10,
-    }),
+        switches: [true, true, true]
+        }),
     components:
     {
         appQuoteGrid: QuoteGrid,
         appNewQuote: NewQuote,
-        appHeader: Header
+        appHeader: Header,
+        appSwitch: Switch,
     },
     methods: {
         onQuoteAdded(quote) {
