@@ -1,6 +1,6 @@
 <<template>
     <div class="row">
-        <app-quote v-for="(quote, idx) in quotes" @click.native="deleteQuote(idx)">
+        <app-quote v-for="(quote, idx) in quotes" @click.native="deleteQuote($event, idx)">
             {{ quote }}
         </app-quote>
     </div>
@@ -15,10 +15,12 @@ export default {
         appQuote: Quote
     },
     methods: {
-        deleteQuote(idx) {
-            // console.log("Deleting", idx);
-            // this.quotes.splice(idx, 1);
-            this.$emit("deleteQuote", idx);
+        deleteQuote($event, idx) {
+            console.log("Click", $event, idx);
+            if ($event.ctrlKey) {
+                console.log("Deleting", idx);
+                this.$emit("deleteQuote", idx);
+            }
         }
     }
 }
