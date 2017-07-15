@@ -1,55 +1,48 @@
 <template>
     <div class="container">
-        <app-header :maxQuotes="maxQuotes" :quoteCount="quotes.length"></app-header>
-        <app-switch v-for="(toggle, i) in switches" v-model="switches[i]"></app-switch>
-        <ul>
-            <li v-for="(toggle, i) in switches" :key="i">{{ toggle }}</li>
-        </ul>
-        <app-new-quote @quoteAdded="onQuoteAdded"></app-new-quote>
-        <app-quote-grid :quotes="quotes" @deleteQuote="deleteQuote"></app-quote-grid>
+        <form>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <!-- Exercise 1 -->
+                    <!-- Create a Signup Form where you retrieve the following Information -->
+                    <!-- Full Name (First Name + Last Name) -->
+                    <!-- Mail -->
+                    <!-- Password -->
+                    <!-- Store Data? Yes/No -->
+
+                    <!-- Exercise 2 -->
+                    <!-- Only display the Form if it has NOT been submitted -->
+                    <!-- Display the Data Summary ONCE the Form HAS been submitted -->
+
+                    <!-- Exercise 3 -->
+                    <!-- Edit the Example from above and create a custom "Full Name" Control -->
+                    <!-- which still holds the First Name and Last Name Input Field -->
+                </div>
+            </div>
+        </form>
+        <hr>
         <div class="row">
-            <div class="col-sm-12 text-center">
-                <div class="alert alert-info">Info: Ctrl-click on a quote to delete it!</div>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Your Data</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Full Name: </p>
+                        <p>Mail: </p>
+                        <p>Password: </p>
+                        <p>Store in Database?: </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import QuoteGrid from './components/QuoteGrid.vue';
-import NewQuote from './components/NewQuote.vue';
-import Switch from "./Switch.vue";
-
-export default {
-    data: () => ({
-        quotes: ["A stitch in time saves nine."],
-        maxQuotes: 10,
-        switches: [true, true, true]
-        }),
-    components:
-    {
-        appQuoteGrid: QuoteGrid,
-        appNewQuote: NewQuote,
-        appHeader: Header,
-        appSwitch: Switch,
-    },
-    methods: {
-        onQuoteAdded(quote) {
-            if (this.quotes.length < this.maxQuotes) {
-                this.quotes.push(quote);
-            } else {
-                alert("You have already reached the maximum number of quotes.  Please delete one before adding another.");
-            }
-        },
-        deleteQuote(index) {
-            // console.log("Deleting", index);
-            this.quotes.splice(index, 1);
-        }
+    export default {
     }
-}
 </script>
 
 <style>
-
 </style>
