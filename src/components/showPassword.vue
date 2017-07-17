@@ -23,7 +23,7 @@ export default {
 
 <<style>
     .glyphicon {
-         padding-left: 0.5em;
+         /* padding-left: 0.5em; */
          padding-right: 0.5em;
     }
     /* .glyphicon:hover {

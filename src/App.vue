@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row" v-if="!isSubmitted">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <!-- Exercise 1 -->
                 <!-- Create a Signup Form where you retrieve the following Information -->
@@ -45,6 +45,9 @@
                                         No</label>
                                 </div>
                             </div>
+                            <div>
+                                <button>Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -58,18 +61,22 @@
                 <!-- which still holds the First Name and Last Name Input Field -->
             </div>
         </div>
-        <hr>
-        <div class="row">
+        <hr v-if="!isSubmitted">
+        <div class="row" v-if="isSubmitted">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: {{ fullName }}</p>
-                        <p>Mail: {{ this.email }}</p>
-                        <p>Password: <app-show-password :password="password"></app-show-password></p>
-                        <p>Store in Database?: {{ storeData }}</p>
+                        <div>Thank you for your submission!  Here is the data you submitted:</div>
+                        <hr>
+                        <div class="submission-grid">
+                            <div>Full Name:</div><div>{{ fullName }}</div>
+                            <div>Mail:</div><div>{{ email }}</div>
+                            <div>Password:</div><div><app-show-password :password="password"></app-show-password></div>
+                            <div>Store in Database?</div><div>{{ storeData }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,6 +93,7 @@ export default {
     },
     data: function () {
         return {
+            isSubmitted: false,
             firstName: "",
             lastName: "",
             email: "",
@@ -99,7 +107,7 @@ export default {
     },
     methods: {
         submit() {
-
+            this.isSubmitted = true;
         },
         passwordMouseDown() {
             this.showPassword = true;
@@ -128,5 +136,14 @@ export default {
     }
     .mouse-pointer-wide:hover {
         background-color: #FFFAE3;
+    }
+
+    .submission-grid {
+        display: grid;
+        grid-gap: 1em;
+        grid-template-columns: 25% 75%;
+    }
+    .submission-grid > div {
+
     }
 </style>
