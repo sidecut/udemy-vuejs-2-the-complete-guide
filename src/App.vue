@@ -28,12 +28,12 @@
                                 <br>
                                 <!--<label :for="`storeData_${_uid}`">Store data:</label>-->
                                 <div>
-                                    <label class="mouse-pointer-wide">
+                                    <label class="control-wide" v-highlight>
                                         <input type="radio" v-model="storeData" :value="true">
                                         Yes</label>
                                 </div>
                                 <div>
-                                    <label class="mouse-pointer-wide">
+                                    <label class="control-wide" v-highlight>
                                         <input type="radio" v-model="storeData" :value="false">
                                         No</label>
                                 </div>
@@ -120,14 +120,10 @@ export default {
 </script>
 
 <style>
-    .mouse-pointer-wide {
-        cursor: pointer;
+    .control-wide {
         width: 100%;
         padding-top: 6px;
         padding-bottom: 6px;
-    }
-    .mouse-pointer-wide:hover {
-        background-color: #FFFAE3;
     }
 
     .submission-grid {
