@@ -14,14 +14,7 @@
                     </div>
                     <div class="panel-body">
                         <form @submit.prevent="submit">
-                            <div class="form-group">
-                                <label :for="`fname_${_uid}`">First Name:</label>
-                                <input type="text" v-model="firstName" class="form-control" :id="`fname_${_uid}`">
-                            </div>
-                            <div class="form-group">
-                                <label :for="`lname_${_uid}`">Last Name:</label>
-                                <input type="text" v-model="lastName" class="form-control" :id="`lname_${_uid}`">
-                            </div>
+                            <app-full-name v-model="fullName"></app-full-name>
                             <div class="form-group">
                                 <label :for="`email_${_uid}`">Email:</label>
                                 <input type="email" v-model="email" class="form-control" :id="`email_${_uid}`">
@@ -86,16 +79,17 @@
 
 <script>
     import ShowPassword from "./components/showPassword.vue";
+    import FullName from "./components/FullName.vue";
 
 export default {
     components: {
         appShowPassword: ShowPassword,
+        appFullName: FullName,
     },
     data: function () {
         return {
             isSubmitted: false,
-            firstName: "",
-            lastName: "",
+            fullName: "",
             email: "",
             password: "",
             storeData: false,
@@ -103,7 +97,6 @@ export default {
         }
     },
     computed: {
-        fullName() { return this.firstName + " " + this.lastName; },
     },
     methods: {
         submit() {
@@ -118,8 +111,6 @@ export default {
     },
     mounted() {
         // * TEMPORARY *
-        this.firstName = "Fred";
-        this.lastName = "Smith";
         this.email = "fred@smith.com";
         this.password = "blahdeblah";
         this.storeData = true;
