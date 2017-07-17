@@ -111,6 +111,7 @@ export default {
     },
     mounted() {
         // * TEMPORARY *
+        this.fullName = "Fred Smith";
         this.email = "fred@smith.com";
         this.password = "blahdeblah";
         this.storeData = true;
