@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import OnDirective from './directives/onDirectives';
+    import OnDirective from './directives/onDirective';
 
     export default {
         data() {
