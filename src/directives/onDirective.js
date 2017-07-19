@@ -1,16 +1,22 @@
 export default {
     bind(el, binding, vnode) {
-        var arg = binding.arg;
-        var expression = binding.expression;
-        var func = vnode.context[expression];
-
-        el.addEventListener(arg, func);
+        // debugger;
+        var type = binding.arg;
+        var listener = binding.value;
+        if (typeof listener === 'function')
+        {
+            el.addEventListener(type, listener);
+        } else {
+            console.warn(`Can't bind to a non-function: ${binding.expression}`);
+        }
     },
     unbind(el, binding, vnode, oldVnode) {
-        var arg = binding.arg;
-        var expression = binding.expression;
-        var func = vnode.context[expression];
-
-        el.removeEventListener(arg, func);
+        // debugger;
+        var type = binding.arg;
+        var listener = binding.value;
+        if (typeof listener === 'function')
+        {
+            el.removeEventListener(type, listener);
+        }
     }
 }
