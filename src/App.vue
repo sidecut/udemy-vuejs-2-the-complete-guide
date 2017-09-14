@@ -10,10 +10,11 @@
                 <!-- Build a Custom Directive which works like v-on (Listen for Events) -->
                 <div v-show="showHelp">
                     <p>Directives in VueJS are really cool.</p>
-                    <p>For more information, see <a href="https://vuejs.org/v2/guide/custom-directive.html">VueJS Directives reference</a>.</p>
+                    <!-- <p>For more information, see <a href="https://vuejs.org/v2/guide/custom-directive.html">VueJS Directives reference</a>.</p> -->
                 </div>
             </div>
         </div>
+        <!-- Test  -->
     </div>
 </template>
 
